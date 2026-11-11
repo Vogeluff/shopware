@@ -331,11 +331,11 @@ Replace `EntityRepository<EntityCollection<ImportExportFileEntity>>` annotations
 
 The property is unused and will be removed in 6.8.
 
-### "Assign status" flow action picks the delivery of the flow
+### "Assign status" flow action picks the delivery and transaction of the flow
 
-The delivery status of the Flow Builder action "Assign status" (`action.set.order.state`) now changes the delivery the flow carries as `orderDelivery` data, if that delivery belongs to the order.
-Otherwise it changes the primary delivery of the order (`primaryOrderDeliveryId`), and only for orders without one the delivery with the highest shipping costs, as before.
-Orders placed through the checkout behave as before, because their primary delivery is the one with the highest shipping costs.
+The Flow Builder action "Assign status" (`action.set.order.state`) now changes the delivery and the transaction the flow carries as `orderDelivery` and `orderTransaction` data, if they belong to the order.
+Otherwise it changes the primary delivery and the primary transaction of the order (`primaryOrderDeliveryId`, `primaryOrderTransactionId`), and only for orders without them the delivery with the highest shipping costs and the newest transaction, as before.
+Orders placed through the checkout get the same delivery and transaction as before, because their primary delivery has the highest shipping costs and their primary transaction is the newest one.
 
 ### SEO URL routes can restrict the associations of the template
 
